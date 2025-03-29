@@ -1,0 +1,15 @@
+# Wi-Fi接続情報
+CIRCUITPY_WIFI_SSID="xxxx"
+CIRCUITPY_WIFI_PASSWORD="xxxx"
+
+# ntfy
+NTFY_URL="https://<your.ntfy.domain>/"
+NTFY_AUTH_VALUE="user:passwd"
+
+# Web Workflows
+# https://docs.circuitpython.org/en/latest/docs/workflows.html#web
+CIRCUITPY_WEB_API_PORT=80
+CIRCUITPY_WEB_API_PASSWORD="xxxx"
+
+# serial terminalで光センサーの値を表示しているのでこれに合わせて通知を送る閾値の値を設定する
+NOTIFY_SENSOR_THRESHOLD=2
