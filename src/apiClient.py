@@ -9,15 +9,15 @@ class notify:
     self.client = adafruit_requests.Session(socket,ssl.create_default_context())
   
   def requestTest(self):
+    print('info: requestTest')
     try:
-      self.client.request(method='GET',url = 'https://www.google.com/');
+      self.client.request(method='GET',url = 'https://httpbin.org/get');
     except:
       # 疎通確認できなければ再起動(ハードリセット)してシステムの回復を試みる。(起動時にネットワーク接続を行っているので)
       # https://learn.adafruit.com/circuitpython-essentials/circuitpython-resetting#hard-reset-3087083
       microcontroller.reset();
 
-  def pushToNtfy(self,topic,message):
-    url = f'{os.getenv('NTFY_URL')}{topic}'
+  def pushToNtfy(self,url,message):
     ntfy_auth_value = os.getenv('NTFY_AUTH_VALUE')
     encode_credentials = base64.b64encode(ntfy_auth_value.encode('utf-8')).decode('utf-8')
     print(encode_credentials)
@@ -25,6 +25,7 @@ class notify:
         'Authorization':f'Basic {encode_credentials}',
     }
     data = message
+    print('info: pushToNotify')
     try:
       self.client.request(
         method='POST',
